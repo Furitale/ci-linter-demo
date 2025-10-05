@@ -1,0 +1,26 @@
+name: Code Style Linter  # Workflow的名称
+
+on: [push, pull_request]  # 触发事件：推送代码或创建PR时
+
+jobs:
+  build:  # 定义一个名为build的作业
+    runs-on: ubuntu-latest  # 在最新的Ubuntu系统上运行
+
+    steps:
+    # 步骤1：将仓库代码检出到运行器上
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 步骤2：设置Python环境
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'  # 使用最新的稳定版3.x
+
+    # 步骤3：安装依赖（即flake8）
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    # 步骤4：运行flake8检查
+    - name: Run flake8 linter
+      run: flake8 . --count --show-source --statistics
