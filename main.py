@@ -4,7 +4,7 @@ def hello_world(name):
     message = "Hello, " + name
     print(message)
     # 移除了未使用的变量 unused_variable
-
+    unused_variable = 42  # 定义了但未使用的变量
 
 if __name__ == "__main__":
     hello_world("GitHub Actions")
