@@ -1,5 +1,5 @@
 import pytest
-from calculator import add
+from calculator import add,subtract
 
 def test_add_positive_numbers():
     """测试正常情况：正数相加"""
@@ -26,3 +26,7 @@ def test_add_string_exception():
     """测试异常情况：字符串参数应抛出TypeError"""
     with pytest.raises(TypeError):
         add("2", 3)
+
+def test_subtract_numbers():
+    assert subtract(5, 3) == 2
+    assert subtract(3, 5) == -2
